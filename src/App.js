@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 import Display from "./components/Display";
 import Button from "./components/Button";
+import Slider from "./components/Slider";
 
 function App() {
   const [bpm, setBpm] = useState(100);
@@ -18,8 +19,13 @@ function App() {
   return (
     <div className="App">
       <Display bpm={bpm} />
-      <Button handleClick={increment}>+</Button>
-      <Button handleClick={decrement}>-</Button>
+      <Button type={"tempo"} handleClick={increment}>
+        +
+      </Button>
+      <Slider bpm={bpm} setBpm={setBpm} />
+      <Button type={"tempo"} handleClick={decrement}>
+        -
+      </Button>
     </div>
   );
 }
