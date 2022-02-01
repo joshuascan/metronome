@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-export default function Display() {
-  const [bpm, setBpm] = useState(100);
-
+export default function Display({ bpm }) {
   return (
     <div>
       <h2>{bpm}</h2>
