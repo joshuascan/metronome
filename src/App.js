@@ -9,10 +9,16 @@ function App() {
   const [bpm, setBpm] = useState(100);
 
   const increment = () => {
+    if (bpm >= 220) {
+      return;
+    }
     setBpm(bpm + 1);
   };
 
   const decrement = () => {
+    if (bpm <= 40) {
+      return;
+    }
     setBpm(bpm - 1);
   };
 
