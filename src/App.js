@@ -7,6 +7,7 @@ import Slider from "./components/Slider";
 
 function App() {
   const [bpm, setBpm] = useState(100);
+  const [playing, setPlaying] = useState(false);
 
   const increment = () => {
     if (bpm >= 220) {
@@ -22,6 +23,10 @@ function App() {
     setBpm(bpm - 1);
   };
 
+  const togglePlay = () => {
+    setPlaying(!playing);
+  };
+
   return (
     <div className="App">
       <Display bpm={bpm} />
@@ -31,6 +36,9 @@ function App() {
       <Slider bpm={bpm} setBpm={setBpm} />
       <Button type={"tempo"} handleClick={decrement}>
         -
+      </Button>
+      <Button type={"play"} handleClick={togglePlay}>
+        {!playing ? "Start" : "Stop"}
       </Button>
     </div>
   );
