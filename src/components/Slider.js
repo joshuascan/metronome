@@ -1,8 +1,8 @@
 import React from "react";
 
 export default function Slider(props) {
-  const handleChange = ({ target: { value: newValue } }) => {
-    props.setBpm(Number(newValue));
+  const handleChange = (e) => {
+    props.setBpm(Number(e.target.value));
   };
 
   return (
