@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import Display from "./components/Display";
 import Button from "./components/Button";
 import Slider from "./components/Slider";
+import TimeSignature from "./components/TimeSignature";
 
 import audio1 from "./audio/click1.mp3";
 import audio2 from "./audio/click2.mp3";
@@ -42,9 +43,9 @@ function App() {
 
   const playClick = useCallback(() => {
     if (count % beatsPerMeasure === 0) {
-      click2.play();
-    } else {
       click1.play();
+    } else {
+      click2.play();
     }
     setCount((prevCount) => (prevCount + 1) % beatsPerMeasure);
   }, [count, click1, click2, beatsPerMeasure]);
@@ -75,6 +76,10 @@ function App() {
       <Button type={"tempo"} handleClick={decrement}>
         -
       </Button>
+      <TimeSignature
+        beatsPerMeasure={beatsPerMeasure}
+        setBeatsPerMeasure={setBeatsPerMeasure}
+      />
       <Button type={"play"} handleClick={togglePlay}>
         {!playing ? "Start" : "Stop"}
       </Button>
