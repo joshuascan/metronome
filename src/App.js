@@ -1,5 +1,6 @@
 import "./App.css";
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import useInterval from "./hooks/useInterval";
 
 import Display from "./components/Display";
 import Button from "./components/Button";
@@ -14,7 +15,6 @@ function App() {
   const [playing, setPlaying] = useState(false);
   const [count, setCount] = useState(0);
   const [beatsPerMeasure, setBeatsPerMeasure] = useState(4);
-  const timer = useRef();
 
   const increment = () => {
     if (bpm >= 220) {
@@ -31,11 +31,10 @@ function App() {
   };
 
   const changeSpeed = (e) => {
-    setBpm(Number(e.target.value));
-
     if (playing) {
       setCount(0);
     }
+    setBpm(Number(e.target.value));
   };
 
   const playClick = useCallback(() => {
@@ -50,14 +49,12 @@ function App() {
     setCount((count + 1) % beatsPerMeasure);
   }, [count, beatsPerMeasure]);
 
-  useEffect(() => {
-    if (playing) {
-      timer.current = setInterval(playClick, (60 / bpm) * 1000);
-    } else {
-      clearInterval(timer.current);
-    }
-    return () => clearInterval(timer.current);
-  }, [bpm, playing, playClick]);
+  useInterval(
+    () => {
+      playClick();
+    },
+    playing ? [60000 / bpm] : null
+  );
 
   const togglePlay = () => {
     if (!playing) {
