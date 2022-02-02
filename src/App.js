@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import Display from "./components/Display";
 import Button from "./components/Button";
@@ -10,8 +10,9 @@ import audio1 from "./audio/click1.mp3";
 function App() {
   const [bpm, setBpm] = useState(100);
   const [playing, setPlaying] = useState(false);
-  const [count, setCount] = useState();
+  const [count, setCount] = useState(0);
   const [beatsPerMeasure, setBeatsPerMeasure] = useState(4);
+  const timer = useRef();
 
   const click1 = new Audio(audio1);
 
@@ -29,11 +30,17 @@ function App() {
     setBpm(bpm - 1);
   };
 
+  const changeSpeed = (e) => {
+    setBpm(Number(e.target.value));
+
+    if (playing) {
+      setCount(0);
+    }
+  };
+
   const togglePlay = () => {
     if (!playing) {
-      let timer = setInterval(click1.play(), (60 / bpm) * 1000);
-    } else {
-      clearInterval(timer);
+      setCount(0);
     }
     setPlaying(!playing);
   };
@@ -44,7 +51,7 @@ function App() {
       <Button type={"tempo"} handleClick={increment}>
         +
       </Button>
-      <Slider bpm={bpm} setBpm={setBpm} />
+      <Slider bpm={bpm} setBpm={setBpm} handleChange={changeSpeed} />
       <Button type={"tempo"} handleClick={decrement}>
         -
       </Button>
