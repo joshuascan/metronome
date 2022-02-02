@@ -6,6 +6,7 @@ import Button from "./components/Button";
 import Slider from "./components/Slider";
 
 import audio1 from "./audio/click1.mp3";
+import audio2 from "./audio/click2.mp3";
 
 function App() {
   const [bpm, setBpm] = useState(100);
@@ -15,6 +16,7 @@ function App() {
   const timer = useRef();
 
   const click1 = new Audio(audio1);
+  const click2 = new Audio(audio2);
 
   const increment = () => {
     if (bpm >= 220) {
@@ -36,6 +38,15 @@ function App() {
     if (playing) {
       setCount(0);
     }
+  };
+
+  const playClick = () => {
+    if (count % beatsPerMeasure === 0) {
+      click2.play();
+    } else {
+      click1.play();
+    }
+    setCount((prevCount) => (prevCount + 1) % beatsPerMeasure);
   };
 
   const togglePlay = () => {
