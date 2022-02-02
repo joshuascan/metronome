@@ -16,9 +16,6 @@ function App() {
   const [beatsPerMeasure, setBeatsPerMeasure] = useState(4);
   const timer = useRef();
 
-  const click1 = new Audio(audio1);
-  const click2 = new Audio(audio2);
-
   const increment = () => {
     if (bpm >= 220) {
       return;
@@ -42,21 +39,24 @@ function App() {
   };
 
   const playClick = useCallback(() => {
+    const click1 = new Audio(audio1);
+    const click2 = new Audio(audio2);
+
     if (count % beatsPerMeasure === 0) {
       click1.play();
     } else {
       click2.play();
     }
-    setCount((prevCount) => (prevCount + 1) % beatsPerMeasure);
-  }, [count, click1, click2, beatsPerMeasure]);
+    setCount((count + 1) % beatsPerMeasure);
+  }, [count, beatsPerMeasure]);
 
   useEffect(() => {
     if (playing) {
-      clearInterval(timer.current);
       timer.current = setInterval(playClick, (60 / bpm) * 1000);
     } else {
       clearInterval(timer.current);
     }
+    return () => clearInterval(timer.current);
   }, [bpm, playing, playClick]);
 
   const togglePlay = () => {
@@ -69,18 +69,18 @@ function App() {
   return (
     <div className="App">
       <Display bpm={bpm} />
-      <Button type={"tempo"} handleClick={increment}>
+      <Button type="tempo" handleClick={increment}>
         +
       </Button>
       <Slider bpm={bpm} setBpm={setBpm} handleChange={changeSpeed} />
-      <Button type={"tempo"} handleClick={decrement}>
+      <Button type="tempo" handleClick={decrement}>
         -
       </Button>
       <TimeSignature
         beatsPerMeasure={beatsPerMeasure}
         setBeatsPerMeasure={setBeatsPerMeasure}
       />
-      <Button type={"play"} handleClick={togglePlay}>
+      <Button type="play" handleClick={togglePlay}>
         {!playing ? "Start" : "Stop"}
       </Button>
     </div>
