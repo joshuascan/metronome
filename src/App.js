@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 
 import Display from "./components/Display";
 import Button from "./components/Button";
@@ -40,14 +40,23 @@ function App() {
     }
   };
 
-  const playClick = () => {
+  const playClick = useCallback(() => {
     if (count % beatsPerMeasure === 0) {
       click2.play();
     } else {
       click1.play();
     }
     setCount((prevCount) => (prevCount + 1) % beatsPerMeasure);
-  };
+  }, [count, click1, click2, beatsPerMeasure]);
+
+  useEffect(() => {
+    if (playing) {
+      clearInterval(timer.current);
+      timer.current = setInterval(playClick, (60 / bpm) * 1000);
+    } else {
+      clearInterval(timer.current);
+    }
+  }, [bpm, playing, playClick]);
 
   const togglePlay = () => {
     if (!playing) {
