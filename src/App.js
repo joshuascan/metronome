@@ -1,5 +1,11 @@
 import "./App.css";
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  useMemo,
+} from "react";
 import useInterval from "./hooks/useInterval";
 
 import Display from "./components/Display";
@@ -7,15 +13,20 @@ import Button from "./components/Button";
 import Slider from "./components/Slider";
 import TimeSignature from "./components/TimeSignature";
 import Metronome from "./components/Metronome";
+import MetronomeHook from "./components/MetronomeHook";
 
 import audio1 from "./audio/click1.mp3";
 import audio2 from "./audio/click2.mp3";
+import useMetronome from "./components/MetronomeHook";
 
 function App() {
   const [bpm, setBpm] = useState(100);
   const [playing, setPlaying] = useState(false);
   const [count, setCount] = useState(0);
   const [beatsPerMeasure, setBeatsPerMeasure] = useState(4);
+
+  const click1 = useMemo(() => new Audio(audio1), []);
+  const click2 = useMemo(() => new Audio(audio2), []);
 
   const increment = () => {
     if (bpm >= 220) {
@@ -39,16 +50,13 @@ function App() {
   };
 
   const playClick = useCallback(() => {
-    const click1 = new Audio(audio1);
-    const click2 = new Audio(audio2);
-
     if (count % beatsPerMeasure === 0) {
       click1.play();
     } else {
       click2.play();
     }
     setCount((count + 1) % beatsPerMeasure);
-  }, [count, beatsPerMeasure]);
+  }, [click1, click2, count, beatsPerMeasure]);
 
   //   useInterval(
   //     () => {
@@ -64,6 +72,8 @@ function App() {
     setPlaying(!playing);
   };
 
+  useMetronome(playClick, 60000 / bpm, playing);
+
   return (
     <div className="App">
       <Display bpm={bpm} />
@@ -74,9 +84,9 @@ function App() {
       <Button type="tempo" handleClick={decrement}>
         -
       </Button>
-      {playing ? (
+      {/* {playing ? (
         <Metronome beatFunction={playClick} beatInterval={60000 / bpm} />
-      ) : null}
+      ) : null} */}
 
       <TimeSignature
         beatsPerMeasure={beatsPerMeasure}
