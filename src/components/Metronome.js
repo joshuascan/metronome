@@ -37,10 +37,6 @@ export default class Metronome extends Component {
 }
 
 Metronome.propTypes = {
-  beatInterval: PropTypes.number,
+  beatInterval: PropTypes.number.isRequired,
   beatFunction: PropTypes.func.isRequired,
-};
-
-Metronome.defaultProps = {
-  beatInterval: 1000,
 };

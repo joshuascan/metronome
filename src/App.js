@@ -6,6 +6,7 @@ import Display from "./components/Display";
 import Button from "./components/Button";
 import Slider from "./components/Slider";
 import TimeSignature from "./components/TimeSignature";
+import Metronome from "./components/Metronome";
 
 import audio1 from "./audio/click1.mp3";
 import audio2 from "./audio/click2.mp3";
@@ -49,12 +50,12 @@ function App() {
     setCount((count + 1) % beatsPerMeasure);
   }, [count, beatsPerMeasure]);
 
-  useInterval(
-    () => {
-      playClick();
-    },
-    playing ? [60000 / bpm] : null
-  );
+  //   useInterval(
+  //     () => {
+  //       playClick();
+  //     },
+  //     playing ? [60000 / bpm] : null
+  //   );
 
   const togglePlay = () => {
     if (!playing) {
@@ -73,6 +74,10 @@ function App() {
       <Button type="tempo" handleClick={decrement}>
         -
       </Button>
+      {playing ? (
+        <Metronome beatFunction={playClick} beatInterval={60000 / bpm} />
+      ) : null}
+
       <TimeSignature
         beatsPerMeasure={beatsPerMeasure}
         setBeatsPerMeasure={setBeatsPerMeasure}
