@@ -91,6 +91,7 @@ function App() {
       <TimeSignature
         beatsPerMeasure={beatsPerMeasure}
         setBeatsPerMeasure={setBeatsPerMeasure}
+        setCount={setCount}
       />
       <Button type="play" handleClick={togglePlay}>
         {!playing ? "Start" : "Stop"}
