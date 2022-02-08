@@ -1,14 +1,20 @@
-import "./App.css";
 import React, { useState, useCallback, useMemo } from "react";
 import useInterval from "./hooks/useInterval";
+import styled from "styled-components";
 
 import Display from "./components/Display";
 import Tempo from "./components/Tempo";
-import StartStopButton from "./components/StartStopButton";
 import TimeSignature from "./components/TimeSignature";
+import StartStopButton from "./components/StartStopButton";
 
 import audio1 from "./audio/click1.mp3";
 import audio2 from "./audio/click2.mp3";
+
+const Metronome = styled.div`
+  text-align: center;
+  background-color: slategray;
+  width: 50rem;
+`;
 
 function App() {
   const [bpm, setBpm] = useState(100);
@@ -36,7 +42,7 @@ function App() {
   );
 
   return (
-    <div className="App">
+    <Metronome className="App">
       <Display bpm={bpm} beatsPerMeasure={beatsPerMeasure} />
       <Tempo bpm={bpm} setBpm={setBpm} setCount={setCount} playing={playing} />
       <TimeSignature
@@ -49,7 +55,7 @@ function App() {
         setPlaying={setPlaying}
         setCount={setCount}
       />
-    </div>
+    </Metronome>
   );
 }
 
