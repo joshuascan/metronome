@@ -26,7 +26,7 @@ export default function Tempo({ bpm, setBpm, setCount, playing }) {
 
   return (
     <div>
-      {" "}
+      <h4>Tempo</h4>
       <Button type="tempo" handleClick={increment}>
         +
       </Button>

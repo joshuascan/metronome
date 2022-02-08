@@ -4,7 +4,7 @@ import useInterval from "./hooks/useInterval";
 
 import Display from "./components/Display";
 import Tempo from "./components/Tempo";
-import Button from "./components/Button";
+import StartStopButton from "./components/StartStopButton";
 import TimeSignature from "./components/TimeSignature";
 
 import audio1 from "./audio/click1.mp3";
@@ -35,26 +35,20 @@ function App() {
     playing ? [60000 / bpm] : null
   );
 
-  const togglePlay = () => {
-    if (!playing) {
-      setCount(0);
-    }
-    setPlaying(!playing);
-  };
-
   return (
     <div className="App">
       <Display bpm={bpm} beatsPerMeasure={beatsPerMeasure} />
       <Tempo bpm={bpm} setBpm={setBpm} setCount={setCount} playing={playing} />
-
       <TimeSignature
         beatsPerMeasure={beatsPerMeasure}
         setBeatsPerMeasure={setBeatsPerMeasure}
         setCount={setCount}
       />
-      <Button type="play" handleClick={togglePlay}>
-        {!playing ? "Start" : "Stop"}
-      </Button>
+      <StartStopButton
+        playing={playing}
+        setPlaying={setPlaying}
+        setCount={setCount}
+      />
     </div>
   );
 }

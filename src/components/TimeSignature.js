@@ -24,7 +24,7 @@ export default function TimeSignature({
   return (
     <div>
       <Button handleClick={increaseTimeSignature}>+</Button>
-      <p>{beatsPerMeasure}</p>
+      <h4>Beats Per Measure</h4>
       <Button handleClick={decreaseTimeSignature}>-</Button>
     </div>
   );
