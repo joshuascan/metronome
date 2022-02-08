@@ -58,12 +58,12 @@ function App() {
     setCount((count + 1) % beatsPerMeasure);
   }, [click1, click2, count, beatsPerMeasure]);
 
-  //   useInterval(
-  //     () => {
-  //       playClick();
-  //     },
-  //     playing ? [60000 / bpm] : null
-  //   );
+  useInterval(
+    () => {
+      playClick();
+    },
+    playing ? [60000 / bpm] : null
+  );
 
   const togglePlay = () => {
     if (!playing) {
@@ -72,7 +72,7 @@ function App() {
     setPlaying(!playing);
   };
 
-  useMetronome(playClick, 60000 / bpm, playing);
+  //   useMetronome(playClick, 60000 / bpm, playing);
 
   return (
     <div className="App">
