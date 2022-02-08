@@ -1,23 +1,14 @@
 import "./App.css";
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  useCallback,
-  useMemo,
-} from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import useInterval from "./hooks/useInterval";
 
 import Display from "./components/Display";
+import Tempo from "./components/Tempo";
 import Button from "./components/Button";
-import Slider from "./components/Slider";
 import TimeSignature from "./components/TimeSignature";
-import Metronome from "./components/Metronome";
-import MetronomeHook from "./components/MetronomeHook";
 
 import audio1 from "./audio/click1.mp3";
 import audio2 from "./audio/click2.mp3";
-import useMetronome from "./components/MetronomeHook";
 
 function App() {
   const [bpm, setBpm] = useState(100);
@@ -27,27 +18,6 @@ function App() {
 
   const click1 = useMemo(() => new Audio(audio1), []);
   const click2 = useMemo(() => new Audio(audio2), []);
-
-  const increment = () => {
-    if (bpm >= 220) {
-      return;
-    }
-    setBpm(bpm + 1);
-  };
-
-  const decrement = () => {
-    if (bpm <= 40) {
-      return;
-    }
-    setBpm(bpm - 1);
-  };
-
-  const changeSpeed = (e) => {
-    if (playing) {
-      setCount(0);
-    }
-    setBpm(Number(e.target.value));
-  };
 
   const playClick = useCallback(() => {
     if (count % beatsPerMeasure === 0) {
@@ -72,21 +42,10 @@ function App() {
     setPlaying(!playing);
   };
 
-  //   useMetronome(playClick, 60000 / bpm, playing);
-
   return (
     <div className="App">
-      <Display bpm={bpm} />
-      <Button type="tempo" handleClick={increment}>
-        +
-      </Button>
-      <Slider bpm={bpm} setBpm={setBpm} handleChange={changeSpeed} />
-      <Button type="tempo" handleClick={decrement}>
-        -
-      </Button>
-      {/* {playing ? (
-        <Metronome beatFunction={playClick} beatInterval={60000 / bpm} />
-      ) : null} */}
+      <Display bpm={bpm} beatsPerMeasure={beatsPerMeasure} />
+      <Tempo bpm={bpm} setBpm={setBpm} setCount={setCount} playing={playing} />
 
       <TimeSignature
         beatsPerMeasure={beatsPerMeasure}
