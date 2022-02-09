@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "./Button";
+import { MdPlayArrow, MdPause } from "react-icons/md";
 
 export default function StartStopButton({ playing, setPlaying, setCount }) {
   const togglePlay = () => {
@@ -11,7 +12,10 @@ export default function StartStopButton({ playing, setPlaying, setCount }) {
 
   return (
     <div>
-      <Button handleClick={togglePlay}>{!playing ? "Start" : "Stop"}</Button>
+      <h4>Start/Stop</h4>
+      <Button size={"large"} handleClick={togglePlay}>
+        {!playing ? <MdPlayArrow /> : <MdPause />}
+      </Button>
     </div>
   );
 }

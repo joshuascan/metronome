@@ -4,20 +4,23 @@ const ButtonStyles = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 50%;
+  font-size: 50px;
+  height: 3rem;
+  width: 3rem;
   /* border: none; */
   ${(props) =>
-    props.type === "adjustment" &&
+    props.size === "large" &&
     `
-    border-radius: 50%;
-    height: 3rem;
-    width: 3rem;
-    font-size: 50px;
+    padding: 0.5rem;
+    height: 5rem;
+    width: 5rem;
   `}
 `;
 
 export default function Button(props) {
   return (
-    <ButtonStyles type={props.type} onClick={props.handleClick}>
+    <ButtonStyles size={props.size} onClick={props.handleClick}>
       {props.children}
     </ButtonStyles>
   );

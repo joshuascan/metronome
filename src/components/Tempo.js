@@ -2,7 +2,7 @@ import React from "react";
 import Button from "./Button";
 import Slider from "./Slider";
 import styled from "styled-components";
-import { IoMdArrowDropleftCircle } from "react-icons/io";
+import { MdArrowDropUp, MdArrowDropDown } from "react-icons/md";
 
 const TempoContainer = styled.div`
   width: 40%;
@@ -45,12 +45,12 @@ export default function Tempo({ bpm, setBpm, setCount, playing }) {
     <TempoContainer>
       <h4>Tempo</h4>
       <AdjustmentsContainer>
-        <Button type={"adjustment"} handleClick={decrement}>
-          <IoMdArrowDropleftCircle />
+        <Button handleClick={decrement}>
+          <MdArrowDropUp />
         </Button>
         <Slider bpm={bpm} setBpm={setBpm} handleChange={changeSpeed} />
         <Button type={"adjustment"} handleClick={increment}>
-          +
+          <MdArrowDropDown />
         </Button>
       </AdjustmentsContainer>
     </TempoContainer>
