@@ -2,10 +2,11 @@ import React from "react";
 import Button from "./Button";
 import Slider from "./Slider";
 import styled from "styled-components";
+import { Text } from "../styles/GlobalComponents";
 import { MdArrowDropUp, MdArrowDropDown } from "react-icons/md";
 
 const TempoContainer = styled.div`
-  width: 40%;
+  width: 35%;
   margin: 1rem;
   display: flex;
   flex-direction: column;
@@ -15,7 +16,7 @@ const TempoContainer = styled.div`
 
 const AdjustmentsContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 `;
 
@@ -43,7 +44,7 @@ export default function Tempo({ bpm, setBpm, setCount, playing }) {
 
   return (
     <TempoContainer>
-      <h4>Tempo</h4>
+      <Text bold>Tempo</Text>
       <AdjustmentsContainer>
         <Button handleClick={decrement}>
           <MdArrowDropUp />

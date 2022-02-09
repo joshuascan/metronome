@@ -29,11 +29,11 @@ export default function Display({ bpm, beatsPerMeasure }) {
     <DisplayContainer>
       <div>
         <Text>TEMPO</Text>
-        <Number size={"3rem"}>{bpm}</Number>
+        <Number>{bpm}</Number>
       </div>
       <div>
         <Text>BEAT</Text>
-        <Number size={"3rem"}>{beatsPerMeasure}</Number>
+        <Number>{beatsPerMeasure}</Number>
       </div>
     </DisplayContainer>
   );

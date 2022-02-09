@@ -19,6 +19,14 @@ const Metronome = styled.div`
   border-radius: 25px;
 `;
 
+const TopSection = styled.section`
+  display: flex;
+`;
+
+const BottomSection = styled.section`
+  display: flex;
+`;
+
 function App() {
   const [bpm, setBpm] = useState(100);
   const [playing, setPlaying] = useState(false);
@@ -45,19 +53,28 @@ function App() {
   );
 
   return (
-    <Metronome className="App">
-      <Display bpm={bpm} beatsPerMeasure={beatsPerMeasure} />
-      <Tempo bpm={bpm} setBpm={setBpm} setCount={setCount} playing={playing} />
-      <TimeSignature
-        beatsPerMeasure={beatsPerMeasure}
-        setBeatsPerMeasure={setBeatsPerMeasure}
-        setCount={setCount}
-      />
-      <StartStopButton
-        playing={playing}
-        setPlaying={setPlaying}
-        setCount={setCount}
-      />
+    <Metronome>
+      <TopSection>
+        <Display bpm={bpm} beatsPerMeasure={beatsPerMeasure} />
+        <StartStopButton
+          playing={playing}
+          setPlaying={setPlaying}
+          setCount={setCount}
+        />
+      </TopSection>
+      <BottomSection>
+        <Tempo
+          bpm={bpm}
+          setBpm={setBpm}
+          setCount={setCount}
+          playing={playing}
+        />
+        <TimeSignature
+          beatsPerMeasure={beatsPerMeasure}
+          setBeatsPerMeasure={setBeatsPerMeasure}
+          setCount={setCount}
+        />
+      </BottomSection>
     </Metronome>
   );
 }

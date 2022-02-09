@@ -1,5 +1,21 @@
 import React from "react";
 import Button from "./Button";
+import styled from "styled-components";
+import { Text } from "../styles/GlobalComponents";
+import { MdArrowDropUp, MdArrowDropDown } from "react-icons/md";
+
+const TimeSignatureContainer = styled.div`
+  width: 25%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid red;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 export default function TimeSignature({
   beatsPerMeasure,
@@ -22,10 +38,19 @@ export default function TimeSignature({
   };
 
   return (
-    <div>
-      <Button handleClick={increaseTimeSignature}>+</Button>
-      <h4>Beats Per Measure</h4>
-      <Button handleClick={decreaseTimeSignature}>-</Button>
-    </div>
+    <TimeSignatureContainer>
+      <Text bold>
+        Beats Per
+        <br /> Measure
+      </Text>
+      <ButtonContainer>
+        <Button handleClick={increaseTimeSignature}>
+          <MdArrowDropUp />
+        </Button>
+        <Button handleClick={decreaseTimeSignature}>
+          <MdArrowDropDown />
+        </Button>
+      </ButtonContainer>
+    </TimeSignatureContainer>
   );
 }
