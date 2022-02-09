@@ -12,7 +12,7 @@ import audio2 from "./audio/click2.mp3";
 
 const Metronome = styled.div`
   text-align: center;
-  background-color: slategray;
+  background-color: #708090;
   width: 80rem;
   margin: 10rem auto;
   padding: 5rem;
