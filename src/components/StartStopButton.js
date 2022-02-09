@@ -11,9 +11,7 @@ export default function StartStopButton({ playing, setPlaying, setCount }) {
 
   return (
     <div>
-      <Button type="play" handleClick={togglePlay}>
-        {!playing ? "Start" : "Stop"}
-      </Button>
+      <Button handleClick={togglePlay}>{!playing ? "Start" : "Stop"}</Button>
     </div>
   );
 }
