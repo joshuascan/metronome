@@ -13,7 +13,10 @@ import audio2 from "./audio/click2.mp3";
 const Metronome = styled.div`
   text-align: center;
   background-color: slategray;
-  width: 50rem;
+  width: 80rem;
+  margin: 10rem auto;
+  padding: 5rem;
+  border-radius: 25px;
 `;
 
 function App() {
