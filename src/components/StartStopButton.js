@@ -11,7 +11,7 @@ const StartStopContainer = styled.div`
   justify-content: space-around;
   align-items: center;
   height: 10rem;
-  margin: 3rem 0;
+  margin: 1rem 0;
 `;
 
 export default function StartStopButton({ playing, setPlaying, setCount }) {

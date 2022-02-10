@@ -6,6 +6,7 @@ import Display from "./components/Display";
 import Tempo from "./components/Tempo";
 import TimeSignature from "./components/TimeSignature";
 import StartStopButton from "./components/StartStopButton";
+import Speaker from "./components/Speaker";
 
 import audio1 from "./audio/click1.mp3";
 import audio2 from "./audio/click2.mp3";
@@ -62,11 +63,12 @@ function App() {
     <Metronome>
       <TopSection>
         <Display bpm={bpm} beatsPerMeasure={beatsPerMeasure} />
-        <StartStopButton
+        <Speaker />
+        {/* <StartStopButton
           playing={playing}
           setPlaying={setPlaying}
           setCount={setCount}
-        />
+        /> */}
       </TopSection>
       <BottomSection>
         <Tempo
