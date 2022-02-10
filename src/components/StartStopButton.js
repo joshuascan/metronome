@@ -5,13 +5,12 @@ import { Text } from "../styles/GlobalComponents";
 import { MdPlayArrow, MdPause } from "react-icons/md";
 
 const StartStopContainer = styled.div`
-  /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   height: 10rem;
-  margin: 1rem 0;
+  margin-top: 1rem;
 `;
 
 export default function StartStopButton({ playing, setPlaying, setCount }) {
