@@ -16,8 +16,8 @@ const ButtonStyles = styled.button`
     props.size === "large" &&
     `
     padding: 0.5rem;
-    height: 5rem;
-    width: 5rem;
+    height: 6rem;
+    width: 6rem;
   `}
 `;
 

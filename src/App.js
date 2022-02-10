@@ -13,22 +13,24 @@ import audio2 from "./audio/click2.mp3";
 const Metronome = styled.div`
   text-align: center;
   background-color: #708090;
-  width: 80rem;
+  width: 73rem;
   margin: 10rem auto;
-  padding: 5rem;
+  padding: 4rem 4rem 3.5rem 4rem;
   border-radius: 25px;
 `;
 
 const TopSection = styled.section`
   display: flex;
+  justify-content: space-between;
+  /* border: 1px solid orange; */
 `;
 
 const BottomSection = styled.section`
   display: flex;
   justify-content: space-around;
-  border: 1px solid green;
-  width: 70%;
-  margin-top: 1rem;
+  /* border: 1px solid green; */
+  width: 50rem;
+  margin-top: 2rem;
 `;
 
 function App() {

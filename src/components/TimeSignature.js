@@ -9,7 +9,7 @@ const TimeSignatureContainer = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 `;
 
 const ButtonContainer = styled.div`

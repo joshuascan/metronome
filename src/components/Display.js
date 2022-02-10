@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import { Text } from "../styles/GlobalComponents";
 
 const DisplayContainer = styled.div`
   display: flex;
   justify-content: space-between;
   height: 20rem;
-  width: 70%;
+  width: 48rem;
   padding: 2rem;
   background-color: #a18c54;
   border: 5px solid #404952;
@@ -17,11 +18,6 @@ const Number = styled.p`
   font-style: italic;
   font-size: 4rem;
   font-weight: bold;
-`;
-
-const Text = styled.p`
-  font-family: ${(props) => props.theme.fonts.main};
-  font-size: 2rem;
 `;
 
 export default function Display({ bpm, beatsPerMeasure }) {
