@@ -6,7 +6,7 @@ const DisplayContainer = styled.div`
   display: flex;
   justify-content: space-between;
   height: 20rem;
-  width: 48rem;
+  width: 46rem;
   padding: 2rem;
   background-color: #a18c54;
   border: 5px solid #404952;

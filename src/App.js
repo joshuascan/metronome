@@ -18,19 +18,32 @@ const Metronome = styled.div`
   margin: 10rem auto;
   padding: 4rem 4rem 3.5rem 4rem;
   border-radius: 25px;
+  border: 0.5rem solid #565659;
 `;
 
-const TopSection = styled.section`
+const ContentContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-  /* border: 1px solid orange; */
 `;
 
-const BottomSection = styled.section`
+const LeftSection = styled.section`
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+const RightSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1.5rem 0 0 3rem;
+  width: fit-content;
+`;
+
+const AdjustmentsContainer = styled.section`
   display: flex;
   justify-content: space-around;
-  /* border: 1px solid green; */
-  width: 50rem;
   margin-top: 2rem;
 `;
 
@@ -61,28 +74,32 @@ function App() {
 
   return (
     <Metronome>
-      <TopSection>
-        <Display bpm={bpm} beatsPerMeasure={beatsPerMeasure} />
-        <Speaker />
-        {/* <StartStopButton
-          playing={playing}
-          setPlaying={setPlaying}
-          setCount={setCount}
-        /> */}
-      </TopSection>
-      <BottomSection>
-        <Tempo
-          bpm={bpm}
-          setBpm={setBpm}
-          setCount={setCount}
-          playing={playing}
-        />
-        <TimeSignature
-          beatsPerMeasure={beatsPerMeasure}
-          setBeatsPerMeasure={setBeatsPerMeasure}
-          setCount={setCount}
-        />
-      </BottomSection>
+      <ContentContainer>
+        <LeftSection>
+          <Display bpm={bpm} beatsPerMeasure={beatsPerMeasure} />
+          <AdjustmentsContainer>
+            <Tempo
+              bpm={bpm}
+              setBpm={setBpm}
+              setCount={setCount}
+              playing={playing}
+            />
+            <TimeSignature
+              beatsPerMeasure={beatsPerMeasure}
+              setBeatsPerMeasure={setBeatsPerMeasure}
+              setCount={setCount}
+            />
+          </AdjustmentsContainer>
+        </LeftSection>
+        <RightSection>
+          <Speaker />
+          <StartStopButton
+            playing={playing}
+            setPlaying={setPlaying}
+            setCount={setCount}
+          />
+        </RightSection>
+      </ContentContainer>
     </Metronome>
   );
 }
