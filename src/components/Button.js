@@ -19,6 +19,10 @@ const ButtonStyles = styled.button`
     height: 6rem;
     width: 6rem;
   `}
+
+  &:active {
+    transform: scale(0.95);
+  }
 `;
 
 export default function Button(props) {
