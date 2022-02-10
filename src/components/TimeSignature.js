@@ -5,7 +5,7 @@ import { Text } from "../styles/GlobalComponents";
 import { MdArrowDropUp, MdArrowDropDown } from "react-icons/md";
 
 const TimeSignatureContainer = styled.div`
-  width: 25%;
+  width: 35%;
   display: flex;
   justify-content: space-around;
   align-items: center;

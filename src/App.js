@@ -25,6 +25,10 @@ const TopSection = styled.section`
 
 const BottomSection = styled.section`
   display: flex;
+  justify-content: space-around;
+  border: 1px solid green;
+  width: 70%;
+  margin-top: 1rem;
 `;
 
 function App() {

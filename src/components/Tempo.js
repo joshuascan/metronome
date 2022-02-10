@@ -6,11 +6,10 @@ import { Text } from "../styles/GlobalComponents";
 import { MdArrowDropUp, MdArrowDropDown } from "react-icons/md";
 
 const TempoContainer = styled.div`
-  width: 35%;
-  margin: 1rem;
+  width: 45%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   border: 1px solid red;
 `;
 
@@ -47,11 +46,11 @@ export default function Tempo({ bpm, setBpm, setCount, playing }) {
       <Text bold>Tempo</Text>
       <AdjustmentsContainer>
         <Button handleClick={decrement}>
-          <MdArrowDropUp />
+          <MdArrowDropDown />
         </Button>
         <Slider bpm={bpm} setBpm={setBpm} handleChange={changeSpeed} />
         <Button type={"adjustment"} handleClick={increment}>
-          <MdArrowDropDown />
+          <MdArrowDropUp />
         </Button>
       </AdjustmentsContainer>
     </TempoContainer>
