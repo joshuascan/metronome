@@ -57,12 +57,13 @@ function App() {
   const click2 = useMemo(() => new Audio(audio2), []);
 
   const playClick = useCallback(() => {
-    if (count % beatsPerMeasure === 0) {
+    if (count === 0 || count === beatsPerMeasure) {
+      setCount(1);
       click1.play();
     } else {
+      setCount(count + 1);
       click2.play();
     }
-    setCount((count + 1) % beatsPerMeasure);
   }, [click1, click2, count, beatsPerMeasure]);
 
   useInterval(
