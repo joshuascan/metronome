@@ -37,7 +37,7 @@ export default function Display({ bpm, beatsPerMeasure, count, playing }) {
           <Number>{beatsPerMeasure}</Number>
         </div>
       </SettingsContainer>
-      <BeatIndicator count={count} playing={playing} />
+      <BeatIndicator count={count} playing={playing} bpm={bpm} />
     </DisplayContainer>
   );
 }
