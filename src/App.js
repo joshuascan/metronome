@@ -76,7 +76,12 @@ function App() {
     <Metronome>
       <ContentContainer>
         <LeftSection>
-          <Display bpm={bpm} beatsPerMeasure={beatsPerMeasure} />
+          <Display
+            bpm={bpm}
+            beatsPerMeasure={beatsPerMeasure}
+            count={count}
+            playing={playing}
+          />
           <AdjustmentsContainer>
             <Tempo
               bpm={bpm}
