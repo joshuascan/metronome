@@ -19,12 +19,17 @@ const Span = styled.div`
   animation: ${enlarge} 0.15s;
 `;
 
-export default function BeatIndicator({ count, playing, bpm }) {
+export default function BeatIndicator({
+  count,
+  playing,
+  bpm,
+  beatsPerMeasure,
+}) {
   const [beats, setBeats] = useState([]);
 
   useEffect(() => {
     if (playing && count > 0) {
-      if (count === 4) {
+      if (count === beatsPerMeasure) {
         setTimeout(() => setBeats([]), 60000 / bpm - 1);
       }
       setBeats((beat) => {
@@ -33,7 +38,7 @@ export default function BeatIndicator({ count, playing, bpm }) {
     } else {
       setBeats([]);
     }
-  }, [count, playing, bpm]);
+  }, [count, playing, bpm, beatsPerMeasure]);
 
   return (
     <BeatIndicatorContainer>
