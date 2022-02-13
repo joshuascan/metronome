@@ -10,7 +10,6 @@ const TempoContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  /* border: 1px solid red; */
 `;
 
 const AdjustmentsContainer = styled.div`
