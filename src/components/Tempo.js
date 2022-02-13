@@ -24,12 +24,18 @@ export default function Tempo({ bpm, setBpm, setCount, playing }) {
     if (bpm >= 220) {
       return;
     }
+    if (playing) {
+      setCount(0);
+    }
     setBpm(bpm + 1);
   };
 
   const decrement = () => {
     if (bpm <= 40) {
       return;
+    }
+    if (playing) {
+      setCount(0);
     }
     setBpm(bpm - 1);
   };
