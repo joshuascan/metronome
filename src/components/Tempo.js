@@ -49,7 +49,7 @@ export default function Tempo({ bpm, setBpm, setCount, playing }) {
           <MdArrowDropDown />
         </Button>
         <Slider bpm={bpm} setBpm={setBpm} handleChange={changeSpeed} />
-        <Button type={"adjustment"} handleClick={increment}>
+        <Button handleClick={increment}>
           <MdArrowDropUp />
         </Button>
       </AdjustmentsContainer>
