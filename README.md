@@ -6,4 +6,4 @@ Allows for both tempo and number of beats per measure to be adjusted. I have als
 
 Use "npm start" to run locally.
 
-### Deployed app can be found [here](https://friendly-williams-b69ad7.netlify.app/)
+### _Deployed app can be found [here](https://friendly-williams-b69ad7.netlify.app/)_
