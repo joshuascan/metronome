@@ -1,13 +1,13 @@
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 
 export default function useInterval(callback, delay) {
   const savedCallback = useRef();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     savedCallback.current = callback;
   }, [callback]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     function tick() {
       savedCallback.current();
     }

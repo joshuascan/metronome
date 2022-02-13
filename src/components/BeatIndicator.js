@@ -30,7 +30,7 @@ export default function BeatIndicator({
   useEffect(() => {
     if (playing && count > 0) {
       if (count === beatsPerMeasure) {
-        setTimeout(() => setBeats([]), 60000 / bpm - 1);
+        setTimeout(() => setBeats([]), 60000 / bpm - 10);
       }
       setBeats((beat) => {
         return [...beat, count];
@@ -43,8 +43,8 @@ export default function BeatIndicator({
   return (
     <BeatIndicatorContainer>
       {beats.map((beat) => (
-        <Span>
-          <MdMusicNote size={"4rem"} key={beat} />
+        <Span key={beat}>
+          <MdMusicNote size={42} />
         </Span>
       ))}
     </BeatIndicatorContainer>
