@@ -15,7 +15,10 @@ const Metronome = styled.div`
   text-align: center;
   background-color: #708090;
   width: 73rem;
-  margin: 10rem auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   padding: 4rem 4rem 3.5rem 4rem;
   border-radius: 25px;
   border: 0.5rem solid #565659;

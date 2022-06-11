@@ -17,6 +17,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body {
+    background-image: url("wood_bg.png");
     font-size: 1.6rem;
     cursor: default;
     }
