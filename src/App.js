@@ -11,17 +11,26 @@ import Speaker from "./components/Speaker";
 import audio1 from "./audio/click1.wav";
 import audio2 from "./audio/click2.wav";
 
+const Container = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const Metronome = styled.div`
   text-align: center;
   background-color: #708090;
   width: 73rem;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   padding: 4rem 4rem 3.5rem 4rem;
   border-radius: 25px;
   border: 0.5rem solid #565659;
+
+  @media screen and (max-width: 730px) {
+    transform: rotate(90deg);
+  }
 `;
 
 const ContentContainer = styled.div`
@@ -77,39 +86,41 @@ function App() {
   );
 
   return (
-    <Metronome>
-      <ContentContainer>
-        <LeftSection>
-          <Display
-            bpm={bpm}
-            beatsPerMeasure={beatsPerMeasure}
-            count={count}
-            playing={playing}
-          />
-          <AdjustmentsContainer>
-            <Tempo
+    <Container>
+      <Metronome>
+        <ContentContainer>
+          <LeftSection>
+            <Display
               bpm={bpm}
-              setBpm={setBpm}
-              setCount={setCount}
+              beatsPerMeasure={beatsPerMeasure}
+              count={count}
               playing={playing}
             />
-            <TimeSignature
-              beatsPerMeasure={beatsPerMeasure}
-              setBeatsPerMeasure={setBeatsPerMeasure}
+            <AdjustmentsContainer>
+              <Tempo
+                bpm={bpm}
+                setBpm={setBpm}
+                setCount={setCount}
+                playing={playing}
+              />
+              <TimeSignature
+                beatsPerMeasure={beatsPerMeasure}
+                setBeatsPerMeasure={setBeatsPerMeasure}
+                setCount={setCount}
+              />
+            </AdjustmentsContainer>
+          </LeftSection>
+          <RightSection>
+            <Speaker />
+            <StartStopButton
+              playing={playing}
+              setPlaying={setPlaying}
               setCount={setCount}
             />
-          </AdjustmentsContainer>
-        </LeftSection>
-        <RightSection>
-          <Speaker />
-          <StartStopButton
-            playing={playing}
-            setPlaying={setPlaying}
-            setCount={setCount}
-          />
-        </RightSection>
-      </ContentContainer>
-    </Metronome>
+          </RightSection>
+        </ContentContainer>
+      </Metronome>
+    </Container>
   );
 }
 
