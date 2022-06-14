@@ -30,6 +30,8 @@ const Metronome = styled.div`
 
   @media screen and (max-width: 730px) {
     transform: rotate(90deg);
+    align-items: flex-start;
+    top: 18%;
   }
 `;
 
